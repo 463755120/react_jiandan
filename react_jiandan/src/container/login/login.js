@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, InputItem, WingBlank, WhiteSpace, Button, NavBar } from 'antd-mobile'
+import { List, InputItem, WingBlank, WhiteSpace, Button, NavBar,Icon  } from 'antd-mobile'
 import Form from '../../component/form/form'
 
 import './login.css'
@@ -21,7 +21,10 @@ class Login extends React.Component {
 
     render() {
         return (<div>
-            <NavBar  mode='dard'>
+            <NavBar  mode='dard' 
+            icon={<Icon type="left" />}
+            onLeftClick={() =>{this.props.history.goBack()}}
+            >
                 登录页
             </NavBar>
             <WhiteSpace />

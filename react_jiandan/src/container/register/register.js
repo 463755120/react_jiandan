@@ -1,15 +1,32 @@
 import React from 'react'
-import { List, InputItem, WingBlank, WhiteSpace, Button, Radio, NavBar } from 'antd-mobile'
+import { List, InputItem, WingBlank, WhiteSpace, Button, Radio, NavBar,Icon } from 'antd-mobile'
 import Form from '../../component/form/form'
 import './register.css'
-
+import {connect} from 'react-redux'
+import {regisger} from '../../redux/user.redux'
+@connect(
+    state=>state.user,
+    {regisger}
+)
 @Form
 class Register extends React.Component {
+    constructor(props) {
+        super(props)
+        this.handleRegister = this.handleRegister.bind(this)
+    }
+    handleRegister(){
+        console.log(this.props)
+        this.props.regisger(this.props.state)
+    }
     render() {
         return (<div>
-            <NavBar mode='dard'>
+            <NavBar  mode='dard' 
+            icon={<Icon type="left" />}
+            onLeftClick={() =>{this.props.history.goBack()}}
+            >
                 注册页
             </NavBar>
+            {this.props.msg? <p className='error-msg'>{this.props.msg}</p>: null}
             <WhiteSpace />
             <WingBlank>
                 <List>
@@ -33,8 +50,17 @@ class Register extends React.Component {
                         }}
                     > 确认密码</InputItem>
                     <WhiteSpace />
+                    <InputItem              
+                    type="digit"
+                    placeholder="请输入手机"
+                    clear
+                    onChange={v => {
+                        this.props.handleChange('phone', v)
+                    }}
+                  >手机</InputItem>
                     <WhiteSpace />
                 </List>
+                <WhiteSpace />
                 <Button type="primary" onClick={this.handleRegister}>注册</Button>
             </WingBlank>
         </div>)
