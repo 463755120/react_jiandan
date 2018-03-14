@@ -21,6 +21,9 @@ const store = createStore(reducers, compose(
 function test() {
     return <h2> 默认页</h2>
 }
+function info() {
+    return <h2> 完善个人信息</h2>
+}
 ReactDOM.render(
     (
         <Provider store={store}>
@@ -30,6 +33,7 @@ ReactDOM.render(
                     <Switch>
                         <Route path="/login" component={Login}></Route>
                         <Route path="/register" component={Register}></Route>
+                        <Route path="/info" component={info}></Route>
                         <Route path="/" component={test}></Route>
                     </Switch>
                 </div>

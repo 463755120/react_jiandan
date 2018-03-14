@@ -1,9 +1,16 @@
 import React from 'react'
 import { List, InputItem, WingBlank, WhiteSpace, Button, NavBar,Icon  } from 'antd-mobile'
 import Form from '../../component/form/form'
+import {connect} from 'react-redux'
+import {login} from '../../redux/user.redux'
+import {Redirect} from 'react-router-dom'
 
 import './login.css'
 import '../baseStyle/base.css'
+@connect(
+    state=>state.user,
+    {login}
+)
 @Form
 class Login extends React.Component {
     constructor(props){
@@ -12,7 +19,7 @@ class Login extends React.Component {
         this.register = this.register.bind(this)
     }
     handleLogin(){
-        console.log('登录中');
+        this.props.login(this.props.state)
         
     }
     register(){
@@ -27,6 +34,8 @@ class Login extends React.Component {
             >
                 登录页
             </NavBar>
+            {this.props.redirectTo? <Redirect to={this.props.redirectTo} />:null}
+            {this.props.msg? <p className='error-msg'>{this.props.msg}</p>: null}
             <WhiteSpace />
             <WingBlank>
                 <List>

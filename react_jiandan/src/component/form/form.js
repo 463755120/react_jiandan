@@ -8,7 +8,6 @@ export default function Form(Comp){
             this.handleChange = this.handleChange.bind(this)
         }
         handleChange(key,val){
-            console.log(val)
             this.setState({
                 [key]:val
             })

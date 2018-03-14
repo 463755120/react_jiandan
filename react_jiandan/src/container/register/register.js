@@ -4,6 +4,7 @@ import Form from '../../component/form/form'
 import './register.css'
 import {connect} from 'react-redux'
 import {regisger} from '../../redux/user.redux'
+import {Redirect} from 'react-router-dom'
 @connect(
     state=>state.user,
     {regisger}
@@ -26,6 +27,7 @@ class Register extends React.Component {
             >
                 注册页
             </NavBar>
+            {this.props.redirectTo? <Redirect to={this.props.redirectTo} />:null}
             {this.props.msg? <p className='error-msg'>{this.props.msg}</p>: null}
             <WhiteSpace />
             <WingBlank>

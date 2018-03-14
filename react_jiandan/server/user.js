@@ -17,6 +17,16 @@ Router.post('/register',function(req,res){
         })
     })
 })
+Router.post('/login',function(req,res){
+    const {user,pwd} = req.body
+    User.findOne({user,pwd},function(err,doc){
+        if(!doc){
+            return res.json({code:1,msg:"用户名或者密码错误"})
+        } 
+        res.cookie('userid',doc._id)
+        return res.json({code:0,data:doc})
+    })
+})
 
 Router.get('/list',function(req,res){
     const {type} = req.query 
