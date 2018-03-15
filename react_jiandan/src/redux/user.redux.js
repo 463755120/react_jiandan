@@ -55,6 +55,9 @@ export function login({user,pwd}){
          }
     }
 } 
+export function loadData(userinfo){
+    return {type:LOAD_DATA,payload:userinfo}
+}
 function authSuccess(obj){
     const {pwd,...data} = obj
     return {type:AUTH_SUCCESS,payload:data}

@@ -2,6 +2,8 @@ const express = require('express')
 const Router = express.Router()
 const model = require('./model')
 const User = model.getModel('user')
+const utils = require('utility')
+const _filter = {'pwd':0,'__v':0}
 
 Router.post('/register',function(req,res){
     const {user,pwd,phone} = req.body
@@ -9,17 +11,21 @@ Router.post('/register',function(req,res){
         if(doc){
             return res.json({code:1,msg:"用户名重复"})
         } 
-        User.create({user,pwd,phone},function(err,doc){
+        const userModel = new User ({user,phone,pwd:md5Pwd(pwd)})
+        userModel.save(function(err,doc){
             if(err){
                 return res.json({code:1,msg:"后端报错"})
             } 
-            return res.json({code:0})
+            const {user, phone, _id} = doc
+			res.cookie('userid', _id)
+			return res.json({code:0,data:{user, phone, _id}})
         })
+        
     })
 })
 Router.post('/login',function(req,res){
     const {user,pwd} = req.body
-    User.findOne({user,pwd},function(err,doc){
+    User.findOne({user,pwd:md5Pwd(pwd)},_filter,function(err,doc){
         if(!doc){
             return res.json({code:1,msg:"用户名或者密码错误"})
         } 
@@ -29,14 +35,30 @@ Router.post('/login',function(req,res){
 })
 
 Router.get('/list',function(req,res){
-    const {type} = req.query 
+    const {phone} = req.query 
     console.log(req.query,req.body)
-    User.find({type},function(err,doc){
+    User.find({phone},function(err,doc){
         return res.json({code:0,data:doc})
     })
 })
 Router.get('/info',function(req,res){
-    return res.json({code:1})
+    const {userid} = req.cookies
+    if(!userid){
+        return res.json({code:1})
+    }
+    User.findOne({_id:userid},function(err,doc){
+        if(err){
+            return res.json({code:1,msg:"后端报错了"})
+           }
+        if(doc){
+        return res.json({code:0,data:doc}) 
+        } 
+    })
+   
 })
+function md5Pwd(pwd){
+    const salt = "wangzhigangLOVErourou1314////****///"
+    return utils.md5(utils.md5(pwd+salt))
+}
 
 module.exports =  Router
