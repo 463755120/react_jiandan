@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import { createStore, applyMiddleware, compose } from 'redux'
 import { BrowserRouter, Route, Redirect, Switch, Router } from 'react-router-dom';
 import Login from './container/login/login'
+import userInfo from './container/userInfo/userInfo'
 import Register from './container/register/register'
 import Authroute from './component/authroute/authroute'
 import thunk from 'redux-thunk'
@@ -33,7 +33,7 @@ ReactDOM.render(
                     <Switch>
                         <Route path="/login" component={Login}></Route>
                         <Route path="/register" component={Register}></Route>
-                        <Route path="/info" component={info}></Route>
+                        <Route path="/info" component={userInfo}></Route>
                         <Route path="/" component={test}></Route>
                     </Switch>
                 </div>
