@@ -47,9 +47,9 @@ export function login({user,pwd}){
     }
     return async dispatch =>{
         const res = await  axios.post('/user/login',{user,pwd})
-        if(res.status === 200 && res.data.code ===0){
-            const phone = res.data.data.phone          
-            dispatch(authSuccess({user,pwd,phone})) 
+        if(res.status === 200 && res.data.code ===0){  
+            console.log(res.data.data)      
+            dispatch(authSuccess(res.data.data)) 
          }else {
              dispatch(errorMsg(res.data.msg))
          }
@@ -57,6 +57,19 @@ export function login({user,pwd}){
 } 
 export function loadData(userinfo){
     return {type:LOAD_DATA,payload:userinfo}
+}
+export function update(userState){
+    if(userState.sValue.length!==0){
+        userState.sValue = userState.sValue.join('')
+    } 
+    return async dispatch =>{
+        const res = await  axios.post('/user/update',userState)
+        if(res.status === 200 && res.data.code ===0){        
+            dispatch(authSuccess(res.data.data)) 
+         }else {
+             dispatch(errorMsg(res.data.msg))
+         }
+    }
 }
 function authSuccess(obj){
     const {pwd,...data} = obj

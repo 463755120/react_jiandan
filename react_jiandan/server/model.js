@@ -8,13 +8,12 @@ const models = {
         'user':{type:String,'require':true},
 		'pwd':{type:String,'require':true},
 		'phone':{type:String,'require':true},
-		//头像
-		'avatar':{type:String},
-		//个人简介
-		'desc':{type:String},
 		//年纪
-		'subject':{type:String},
+		'sValue':{type:String},
+		//学校
 		'school':{type:String},
+		//弱科
+		'subject':{type:String},
     }
 }
 for(let m in models){
