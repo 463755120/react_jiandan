@@ -47,8 +47,7 @@ export function login({user,pwd}){
     }
     return async dispatch =>{
         const res = await  axios.post('/user/login',{user,pwd})
-        if(res.status === 200 && res.data.code ===0){  
-            console.log(res.data.data)      
+        if(res.status === 200 && res.data.code ===0){       
             dispatch(authSuccess(res.data.data)) 
          }else {
              dispatch(errorMsg(res.data.msg))

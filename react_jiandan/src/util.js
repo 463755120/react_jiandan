@@ -6,7 +6,7 @@ export function getRedirectPath({sValue}){
     if(!sValue){
         url ='info'
     }else{
-        url = '/'
+        url = '/index'
     }
     return url
 }
