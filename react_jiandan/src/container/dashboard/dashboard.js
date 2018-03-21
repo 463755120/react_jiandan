@@ -4,15 +4,13 @@ import { NavBar, Icon } from 'antd-mobile'
 import { Switch, Route } from 'react-router-dom'
 import NavLinkBar from '../../component/navlink/navlink'
 import Courselist from '../courselist/courselist'
+import User from '../user/user'
 
 function Index() {
     return <h2>主页...</h2>
 }
 function Shopcard() {
     return <h2>购物车</h2>
-}
-function User() {
-    return <h2>个人主页</h2>
 }
 export default class Dashboard extends React.Component {
     constructor(props) {
@@ -59,14 +57,14 @@ export default class Dashboard extends React.Component {
             >
                 {navList.find(v=>v.path==pathname).title}
             </NavBar>
-            <div style={{ marginTop: 45 }}>
+            <NavLinkBar data={navList}></NavLinkBar>
+            <div style={{ marginTop: 10 }}>
                 <Switch>
                     {navList.map(v => (
                         <Route key={v.path} path={v.path} component={v.component}></Route>
                     ))}
                 </Switch>
             </div>
-            <NavLinkBar data={navList}></NavLinkBar>
         </div>)
     }
 }

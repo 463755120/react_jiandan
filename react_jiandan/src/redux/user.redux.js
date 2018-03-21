@@ -70,6 +70,9 @@ export function update(userState){
          }
     }
 }
+export function logoutSubmit(){
+	return { type:LOGOUT }
+}
 function authSuccess(obj){
     const {pwd,...data} = obj
     return {type:AUTH_SUCCESS,payload:data}

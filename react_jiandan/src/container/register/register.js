@@ -14,10 +14,13 @@ class Register extends React.Component {
     constructor(props) {
         super(props)
         this.handleRegister = this.handleRegister.bind(this)
+        this.handleLogin = this.handleLogin.bind(this)
     }
     handleRegister(){
-        console.log(this.props)
         this.props.regisger(this.props.state)
+    }
+    handleLogin(){
+        this.props.history.push('/login')
     }
     render() {
         return (<div>
@@ -64,6 +67,8 @@ class Register extends React.Component {
                 </List>
                 <WhiteSpace />
                 <Button type="primary" onClick={this.handleRegister}>注册</Button>
+                <WhiteSpace />
+                <Button type="primary" onClick={this.handleLogin}>已有帐号，登录</Button>
             </WingBlank>
         </div>)
     }

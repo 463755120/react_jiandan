@@ -51,7 +51,6 @@ export default class UserInfo extends React.Component {
                 }
             ]
         ];
-        console.log("***")
         return (<div>
             {redirect&&redirect!==path? <Redirect to={this.props.redirectTo}></Redirect> :null}
             <NavBar mode='dard'
