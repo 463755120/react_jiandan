@@ -38,7 +38,7 @@ export function regisger({ user, pwd, repeatpwd, phone }) {
     return async dispatch => {
         const res = await axios.post('/user/register', { user, pwd, phone })
         if (res.status === 200 && res.data.code === 0) {
-            dispatch(authSuccess(({ user, pwd, phone })))
+            dispatch(authSuccess(({ user, phone })))
         } else {
             dispatch(errorMsg(res.data.msg))
         }
@@ -51,6 +51,7 @@ export function login({ user, pwd }) {
     return async dispatch => {
         const res = await axios.post('/user/login', { user, pwd })
         if (res.status === 200 && res.data.code === 0) {
+            res.data.data.pwd = ""
             dispatch(authSuccess(res.data.data))
         } else {
             dispatch(errorMsg(res.data.msg))
@@ -70,6 +71,7 @@ export function update(userState) {
     return async dispatch => {
         const res = await axios.post('/user/update', userState)
         if (res.status === 200 && res.data.code === 0) {
+            
             dispatch(authSuccess(res.data.data))
         } else {
             dispatch(errorMsg(res.data.msg))

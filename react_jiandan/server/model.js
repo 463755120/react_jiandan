@@ -14,7 +14,22 @@ const models = {
 		'school':{type:String},
 		//弱科
 		'subject':{type:String},
-    }
+	},
+	pageShuff:{
+		'shuffimgurl':{type:String},
+		'shuffimglink':{type:String},
+	},
+	pageCategory:{
+		'categoryurl':{type:String},
+		'categorylink':{type:String}
+	},
+	pageClass:{
+		'classurl':{type:String},
+		'classlink':{type:String},
+		'classtitle':{type:String},
+		'classprice':{type:String}
+	}
+
 }
 for(let m in models){
     mongoose.model(m,new mongoose.Schema(models[m]))

@@ -13,7 +13,7 @@ export default class Shuffling extends React.Component{
     render(){
         return(<div style={{ marginTop: -10 }}>
             <Carousel
-          autoplay={true}
+          autoplay={false}
           infinite
           selectedIndex={1}
           beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
