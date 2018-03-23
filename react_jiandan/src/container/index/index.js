@@ -11,12 +11,13 @@ export default class Index extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            data: ['1', '2', '3'],
-            imgHeight: 176,
-            slideIndex: 0,
+            shuffData: [],
+            categoryData:[],
+            ClassData: [],
           }
     }
     componentDidMount() {
+        //如果已有数据则不进行请求
         this.props.homePage()
     }
     render(){

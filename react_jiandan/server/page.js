@@ -33,16 +33,14 @@ Router.get('/index',function(req, res){
     // }) 
     const asyncPageget = async function () {
         try{
-            const [shuffData, CategoryData,ClassData] = await Promise.all([pageShuff.find({}), pageCategory.find({}),pageClass.find({})]);
-            console.log(shuffData,"11111")
-            console.log(CategoryData,"2222")
-            console.log(ClassData,"33333")
+            const [shuffData, categoryData,classData] = await Promise.all([pageShuff.find({}), pageCategory.find({}),pageClass.find({})]);
+            return res.json({code:0,data:{shuffData,categoryData,classData}})
         } catch(err){
             console.log(err)
             return res.json({code:1,msg:"后端报错了"})
         }        
       };
-      asyncPageget()
+    asyncPageget()
 })
 
 
