@@ -4,11 +4,9 @@ import { NavBar, Icon } from 'antd-mobile'
 import { Switch, Route } from 'react-router-dom'
 import NavLinkBar from '../../component/navlink/navlink'
 import Courselist from '../courselist/courselist'
+import Index from '../index/index'
 import User from '../user/user'
 
-function Index() {
-    return <h2>主页...</h2>
-}
 function Shopcard() {
     return <h2>购物车</h2>
 }

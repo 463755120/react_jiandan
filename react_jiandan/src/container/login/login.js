@@ -2,14 +2,14 @@ import React from 'react'
 import { List, InputItem, WingBlank, WhiteSpace, Button, NavBar,Icon  } from 'antd-mobile'
 import Form from '../../component/form/form'
 import {connect} from 'react-redux'
-import {login} from '../../redux/user.redux'
+import {login,msgClear} from '../../redux/user.redux'
 import {Redirect} from 'react-router-dom'
 
 import './login.css'
 import '../baseStyle/base.css'
 @connect(
     state=>state.user,
-    {login}
+    {login,msgClear}
 )
 @Form
 class Login extends React.Component {
@@ -22,8 +22,11 @@ class Login extends React.Component {
         this.props.login(this.props.state)
         
     }
-    register(){
+    register(){      
         this.props.history.push('/register')
+    }
+    componentDidMount() {
+        this.props.msgClear()
     }
 
     render() {

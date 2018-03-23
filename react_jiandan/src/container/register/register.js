@@ -3,11 +3,11 @@ import { List, InputItem, WingBlank, WhiteSpace, Button, Radio, NavBar,Icon } fr
 import Form from '../../component/form/form'
 import './register.css'
 import {connect} from 'react-redux'
-import {regisger} from '../../redux/user.redux'
+import {regisger,msgClear} from '../../redux/user.redux'
 import {Redirect} from 'react-router-dom'
 @connect(
     state=>state.user,
-    {regisger}
+    {regisger,msgClear}
 )
 @Form
 class Register extends React.Component {
@@ -21,6 +21,9 @@ class Register extends React.Component {
     }
     handleLogin(){
         this.props.history.push('/login')
+    }
+    componentDidMount() {
+        this.props.msgClear()
     }
     render() {
         return (<div>
@@ -62,7 +65,7 @@ class Register extends React.Component {
                     onChange={v => {
                         this.props.handleChange('phone', v)
                     }}
-                  >手机</InputItem>
+                  >手机 </InputItem>
                     <WhiteSpace />
                 </List>
                 <WhiteSpace />
