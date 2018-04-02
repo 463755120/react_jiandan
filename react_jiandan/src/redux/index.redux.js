@@ -10,7 +10,7 @@ const initState = {
 export function index(state =initState, action) {
     switch (action.type) {
         case INDEX_SUCCES:
-            return { ...state,msg: '',...action.payload}
+            return { ...state,msg: '',...action.payload }
         case INDEX_ERR:
             return { ...state,msg: action.msg}
         default:

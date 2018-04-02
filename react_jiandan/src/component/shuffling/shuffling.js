@@ -5,34 +5,34 @@ export default class Shuffling extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            data: ['1', '2', '3'],
-            imgHeight: 176,
             slideIndex: 0,
           }
     }
     render(){
+        
+        const shufflingData =typeof this.props.data === "undefined"? []:this.props.data
         return(<div style={{ marginTop: -10 }}>
             <Carousel
           autoplay={false}
           infinite
           selectedIndex={1}
-          beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-          afterChange={index => console.log('slide to', index)}
+          // beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
+          // afterChange={index => console.log('slide to', index)}
         >
-          {this.state.data.map(val => (
+          {shufflingData.map(val => (
             <a
               key={val}
-              href="http://www.alipay.com"
-              style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
+              href={val.shuffimglink}
+              style={{ display: 'inline-block', width: '100%', height: "2rem" }}
             >
               <img
-                src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
+                src={val.shuffimgurl}
                 alt=""
                 style={{ width: '100%', verticalAlign: 'top' }}
                 onLoad={() => {
                   // fire window resize event to change height
                   window.dispatchEvent(new Event('resize'));
-                  this.setState({ imgHeight: 'auto' });
+                  this.setState({ imgHeight: "2rem" });
                 }}
               />
             </a>
