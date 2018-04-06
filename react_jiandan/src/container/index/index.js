@@ -2,8 +2,10 @@ import React from 'react'
 import { WhiteSpace} from 'antd-mobile';
 import Shuffling from '../../component/shuffling/shuffling'
 import Category from '../../component/category/category'
+import ClassSubject from '../../component/classSubject/classSubject'
 import {connect} from 'react-redux'
 import {homePage} from '../../redux/index.redux'
+import styled from 'styled-components';
 
 @connect(
 	state=>state.index,
@@ -22,14 +24,22 @@ export default class Index extends React.Component{
         //如果已有数据则不进行请求
         if(typeof this.props.shuffData === "undefined"){
             this.props.homePage()
-        }      
+        }   
+        
     }
     render(){
         const props = this.props
+        const Title = styled(ClassSubject)`
+        color: #ccc;
+        font-size: 1.5em;
+        text-align: center;
+      `;
         return(<div>       
             <Shuffling data ={props.shuffData}></Shuffling>
             <WhiteSpace/>
-            <Category></Category>
+            <Category data ={props.categoryData}></Category>
+            <WhiteSpace/>
+            <Title data ={props.classData}></Title>
         </div>)
     }
 }

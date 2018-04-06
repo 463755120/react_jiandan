@@ -23,7 +23,7 @@ export default class Shuffling extends React.Component{
             <a
               key={val}
               href={val.shuffimglink}
-              style={{ display: 'inline-block', width: '100%', height: "2rem" }}
+              style={{ display: 'inline-block', width: '100%', height: "3rem" }}
             >
               <img
                 src={val.shuffimgurl}
@@ -32,7 +32,7 @@ export default class Shuffling extends React.Component{
                 onLoad={() => {
                   // fire window resize event to change height
                   window.dispatchEvent(new Event('resize'));
-                  this.setState({ imgHeight: "2rem" });
+                  this.setState({ imgHeight: "3rem" });
                 }}
               />
             </a>

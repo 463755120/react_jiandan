@@ -51,18 +51,19 @@ export default class Dashboard extends React.Component {
         return (<div>
             <NavBar mode='dard'
                 icon={<Icon type="left" />}
-                onLeftClick={() => { this.props.history.goBack() }}
+                onLeftClick={() =>{this.props.history.goBack()}}
             >
                 {navList.find(v=>v.path==pathname).title}
             </NavBar>
             <NavLinkBar data={navList}></NavLinkBar>
-            <div style={{ marginTop: 10 }}>
+            <div style={{ marginTop: 10}}>
                 <Switch>
                     {navList.map(v => (
                         <Route key={v.path} path={v.path} component={v.component}></Route>
                     ))}
                 </Switch>
             </div>
+            <NavLinkBar data={navList}></NavLinkBar>
         </div>)
     }
 }

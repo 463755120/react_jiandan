@@ -3,6 +3,8 @@ import { NavBar, InputItem, TextareaItem, Button, Icon, Picker, List } from 'ant
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { update } from '../../redux/user.redux'
+import styled from 'styled-components';
+import './usreinFo.css'
 @connect(
     state=>state.user,
     {update}
@@ -23,7 +25,12 @@ export default class UserInfo extends React.Component {
         })
     }
     render() {
+        const BreadcrumbStyled = styled(Picker)`
+        font-size: 1.5em;
+ `;
+    console.log(BreadcrumbStyled)
         const path = this.props.location.pathname
+        const test = {fontSize:18}
         const redirect = this.props.redirectTo
         const seasons = [
             [
