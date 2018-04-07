@@ -20,7 +20,7 @@ const store = createStore(reducers, compose(
     window.devToolsExtension ? window.devToolsExtension() : f => f
 ))
 function test() {
-    return <h2> 默认页</h2>
+    return <h2> 404</h2>
 }
 ReactDOM.render(
     (
@@ -33,6 +33,7 @@ ReactDOM.render(
                         <Route path="/register" component={Register}></Route>
                         <Route path="/info" component={userInfo}></Route>
                         <Route path="/" component={Dashboard}></Route>
+                        <Route component={test}/>
                     </Switch>
                 </div>
             </BrowserRouter>

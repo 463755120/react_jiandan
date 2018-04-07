@@ -20,5 +20,19 @@ Router.get('/index',function(req, res){
     asyncPageget()
 })
 
+Router.post('/courselist',function(req, res){
+    const {sValue} = req.body
+    const asyncCourselist = async function () {
+        try{
+            const courselistData = await pageClass.find({sValue});
+            return res.json({code:0,data:{courselistData}})
+        } catch(err){
+            console.log(err)
+            return res.json({code:1,msg:"后端报错了"})
+        }        
+      };
+      asyncCourselist()
+})
+
 
 module.exports =  Router

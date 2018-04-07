@@ -29,17 +29,12 @@ export default class Index extends React.Component{
     }
     render(){
         const props = this.props
-        const Title = styled(ClassSubject)`
-        color: #ccc;
-        font-size: 1.5em;
-        text-align: center;
-      `;
         return(<div>       
             <Shuffling data ={props.shuffData}></Shuffling>
             <WhiteSpace/>
             <Category data ={props.categoryData}></Category>
             <WhiteSpace/>
-            <Title data ={props.classData}></Title>
+            <ClassSubject data ={props.classData}></ClassSubject>
         </div>)
     }
 }

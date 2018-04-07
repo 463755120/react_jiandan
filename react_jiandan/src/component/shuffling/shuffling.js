@@ -11,7 +11,7 @@ export default class Shuffling extends React.Component{
     render(){
         
         const shufflingData =typeof this.props.data === "undefined"? []:this.props.data
-        return(<div style={{ marginTop: -10 }}>
+        return(<div style={{ marginTop: 0 }}>
             <Carousel
           autoplay={false}
           infinite
