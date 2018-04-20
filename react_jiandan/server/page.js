@@ -21,10 +21,14 @@ Router.get('/index',function(req, res){
 })
 
 Router.post('/courselist',function(req, res){
-    const {sValue} = req.body
+    const {classSubject} = req.body
+    let selectr = {classSubject}
+    if(classSubject == ""){
+        selectr = null;
+    }
     const asyncCourselist = async function () {
         try{
-            const courselistData = await pageClass.find({sValue});
+            const courselistData = await pageClass.find(selectr);
             return res.json({code:0,data:{courselistData}})
         } catch(err){
             console.log(err)

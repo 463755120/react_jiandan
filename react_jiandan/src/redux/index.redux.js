@@ -28,11 +28,13 @@ export function homePage(){
         }
     }
 }
-export function courselist({sValue}){
+export function courselist({classSubject}){
+    if(classSubject === "undefind"){
+        return
+    }
     return async dispatch => {
-        const res = await axios.post('/page/courselist',{sValue})
-        if (res.status === 200 && res.data.code === 0) {
-            
+        const res = await axios.post('/page/courselist',{classSubject})
+        if (res.status === 200 && res.data.code === 0) {           
             dispatch(axiosSuccess(res.data.data))
         } else {
             dispatch(errorMsg(res.data.msg))

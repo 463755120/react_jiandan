@@ -14,7 +14,22 @@
     -ms-flex-align: center;
     align-items: center;
   }
-  
+  .test2{
+    width: 6.2rem;
+    margin-left: 0.36rem;
+    border-bottom: 1px solid #e8e8e8;
+    padding-bottom: 0.38rem;
+    font-size: 0.15rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
   .ad_content_img {
     width: 2.6rem;
   }

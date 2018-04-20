@@ -1,6 +1,5 @@
 import React from 'react'
 import { Grid, List, Card } from 'antd-mobile'
-import styled from 'styled-components';
 import './classSubject.css'
 
 export default class ClassSubject extends React.Component {
@@ -11,24 +10,27 @@ export default class ClassSubject extends React.Component {
         }
     }
     render() {
-        const GroupCard = styled(Card) `
-        margin-top: 10px;
-        background-color: yellow;
-     `;
+        const classData = typeof this.props.data === "undefined" ? [] : this.props.data;
         return (
             <div>
-                <div className="ad_content">
-                    <img className="ad_content_img" src="http://image.jiandan100.cn/images/packages/20180215011.png" alt="" />
+                {classData.map(v => {
+
+                    return <div className="test2" key ={v._id}>
+                        <img className="ad_content_img" src={v.classurl} alt="" />
                         <div className="ad_course_information">
-                            <p className="course_title">2017-2021年巨无霸（移动课堂VIP版）（六三制）	</p>
+                            <p className="course_title">{v.classtitle}</p>
                             <div className="price_information">
                                 <p className="course_price">
-                                    <span className="currency">￥</span>7500
+                                    <span className="currency">￥</span>{v.classprice}
                                 </p>
+                                <p>{v.classSubject}</p>
                             </div>
                         </div>
-                  </div>
-                </div>
-                )
+                    </div>
+                })}
+
+            </div>
+
+        )
     }
 }
